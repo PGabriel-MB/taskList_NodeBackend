@@ -1,6 +1,8 @@
-# TexStyle
-This is a **Node.js** back-end that is serving a React front-end ToDo Application
+## Node TaskList backEnd
 
-## Project's Goal
+Uma aplicação back-End construído com as seguintes tecnologias:
+- Express.js
+- MongoDB
 
-It's simply study Front-end React application, applying knowledges of Authentications and Layout building.
+## Front-End da Aplicação
+Esta aplicação como seu front-End uma aplicação [React](https://github.com/PGabriel-MB/react-tasks)
