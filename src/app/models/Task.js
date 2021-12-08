@@ -1,4 +1,4 @@
-const mongoose = require('../database/index');
+const mongoose = require('../../database/index');
 
 const TaskSchema = new mongoose.Schema({
     taskName: {

@@ -12,7 +12,6 @@ app.listen(3000, () => {
     console.log("Running on 3000!");
 });
 
-require('./controllers/authController')(app);
-require('./controllers/projectController')(app);
+require('./app/controllers/index')(app);
 
 module.exports = app;
