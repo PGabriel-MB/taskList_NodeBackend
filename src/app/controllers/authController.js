@@ -70,7 +70,6 @@ router.post('/forgot_password', async (req, res) => {
         const now = new Date();
         now.setHours(now.getHours + 1);
 
-        console.log('TÁ CHEGANDO AQUI')
         const userEdited = await User.findByIdAndUpdate(user._id, {
             passwordResetToken: token,
             passwordResetExpires: now
@@ -82,5 +81,25 @@ router.post('/forgot_password', async (req, res) => {
         res.status(400).send({ error: 'Error on forgot password, try again!' });
     }
 });
+
+router.post('/validate-token', async (req, res) => {
+    const { token, userId } = req.body;
+
+    await jwt.verify(token, authConfig.secret, (err, decoded) => {
+        if (err) {
+            console.error('Error on verifying token', err)
+            return res.status(401).send({ error: err.message })
+        } 
+
+        const user = await User.findOne({ id: userId });
+        
+        return res.send({
+            success: "Validated Token!",
+            token,
+            user, 
+            isAuthenticaded: true
+        })
+    })
+})
 
 module.exports = app => app.use('/auth', router);
