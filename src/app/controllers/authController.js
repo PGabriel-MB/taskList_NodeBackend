@@ -85,7 +85,7 @@ router.post('/forgot_password', async (req, res) => {
 router.post('/validate-token', async (req, res) => {
     const { token, userId } = req.body;
 
-    const user = await User.findOne({ id: userId });
+    const user = await User.findOne({ _id: userId });
 
     await jwt.verify(token, authConfig.secret, (err, decoded) => {
         if (err) {
